@@ -1,0 +1,441 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Dominican Republic Flag Colors */
+    --dr-blue: #002d62;
+    --dr-red: #ce1126;
+    --dr-white: #ffffff;
+    
+    /* Extended Palette */
+    --primary: #002d62;
+    --accent: #ce1126;
+    --light: #f8f9fa;
+    --dark: #1a1a2e;
+    --gray: #6c757d;
+    --success: #28a745;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-dr: linear-gradient(135deg, #002d62 0%, #ce1126 50%, #002d62 100%);
+    --gradient-sunset: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--dark);
+    position: relative;
+}
+
+/* Background Animations */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.gradient-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #667eea 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+    opacity: 0.15;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--dr-blue);
+    border-radius: 50%;
+    animation: float 15s infinite;
+    opacity: 0.5;
+}
+
+.particle:nth-child(even) {
+    background: var(--dr-red);
+    animation-duration: 20s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* Language Toggle */
+.language-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--dark);
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.lang-btn.active {
+    background: var(--dr-blue);
+    color: white;
+    border-color: var(--dr-blue);
+}
+
+/* Container */
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.content {
+    text-align: center;
+    max-width: 800px;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo Section */
+.logo-section {
+    margin-bottom: 2rem;
+    animation: pulse 3s ease infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 900;
+    background: var(--gradient-dr);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: var(--gray);
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+/* Coming Soon Section */
+.coming-soon {
+    margin-bottom: 3rem;
+}
+
+.coming-soon h2 {
+    font-size: 2rem;
+    color: var(--dr-red);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.description {
+    font-size: 1.125rem;
+    color: var(--gray);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Countdown Section */
+.countdown-section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-title {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-number {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--dr-blue);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
+}
+
+.countdown-label {
+    font-size: 0.875rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+.countdown-separator {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    color: var(--dr-red);
+    font-weight: 700;
+    animation: blink 2s ease infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Signup Section */
+.signup-section {
+    margin-bottom: 3rem;
+}
+
+.signup-text {
+    font-size: 1.125rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+}
+
+.signup-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.email-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.email-input:focus {
+    border-color: var(--dr-blue);
+    box-shadow: 0 0 0 3px rgba(0, 45, 98, 0.1);
+}
+
+.submit-btn {
+    padding: 1rem 2rem;
+    background: var(--gradient-dr);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(206, 17, 38, 0.3);
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 10px;
+    display: none;
+}
+
+.form-message.success {
+    display: block;
+    background: rgba(40, 167, 69, 0.1);
+    color: var(--success);
+}
+
+.form-message.error {
+    display: block;
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    color: var(--dr-blue);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    background: var(--dr-blue);
+    color: white;
+    box-shadow: 0 10px 25px rgba(0, 45, 98, 0.3);
+}
+
+/* Footer */
+.footer {
+    color: var(--gray);
+    font-size: 0.875rem;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+}
+
+.location {
+    font-size: 1rem;
+    color: var(--dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .language-toggle {
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    .countdown {
+        gap: 0.5rem;
+    }
+    
+    .countdown-separator {
+        display: none;
+    }
+    
+    .countdown-item {
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        min-width: 70px;
+    }
+    
+    .signup-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .email-input {
+        width: 100%;
+    }
+    
+    .submit-btn {
+        width: 100%;
+    }
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 1000px 100%;
+}
